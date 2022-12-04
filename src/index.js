@@ -1,30 +1,93 @@
-// import new_platform from ".images/new_platform.png"
-const canvas = document.querySelector("canvas")
-const c = canvas.getContext("2d")
-console.log(c)
+let playerState = 'idle'
+const dropDown = document.getElementById("animations")
+dropDown.addEventListener('change', function(e){
+    playerState = e.target.value;
+})
 
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d')
+const CANVAS_WIDTH = canvas.width = 600
+const CANVAS_HEIGHT = canvas.width = 600
 
-class Sprite {
-    constructor({position}){
-        this.position = position
-        this.image = new Image()
-        this.image.src = "./images/new_platform.png"
+const playerImage = new Image();
+playerImage.src = './src/images/shadow_dog.png'
+
+const spriteWidth = 575
+const spriteHeight = 523
+
+let gameSpeed = 5
+const backgroundlayer1 = new Image();//same as getElementByImage()
+backgroundlayer1.src = '../src/images/nestor.png'
+
+const plateformImage = new Image()
+plateformImage.src = '../src/images/background.png'
+
+//changes sprite frame
+let gameframe = 0;
+const staggerFrames = 5;
+const spriteAnimations = [];
+const animationStates = [
+    {
+        name: 'idle',
+        frames: 7,
+    },
+    {
+        name: 'jump',
+        frames: 7,
+    },
+    {
+        name: 'fall',
+        frames: 7,
+    },
+    {
+        name: 'run',
+        frames: 9,
+    },
+    {
+        name: 'dizzy',
+        frames: 5,
+    },
+    {
+        name: 'sit',
+        frames: 5,
+    },
+    {
+        name: 'roll',
+        frames: 7,
+    },
+    {
+        name: 'bite',
+        frames: 7,
+    },
+    {
+        name: 'ko',
+        frames: 10,
+    },
+    {
+        name: 'gethit',
+        frames: 4,
     }
-    draw(){
-        c.drawImage(this.image, this.position.x, this.position.y)
+];
+animationStates.forEach((state, index)=>{
+    let frames = {
+        loc: [],
     }
-}
-
-
+    for (let j = 0; j < state.frames; j++){
+        let positionX = j * spriteWidth
+        let positionY = index * spriteHeight
+        frames.loc.push({x: positionX, y: positionY})
+    }
+    spriteAnimations[state.name] = frames;
+})
+console.log(spriteAnimations)
 
 const gravity = 1.9
+
 class Player {
     constructor() {
         this.position = {
             x: 100,
-            y: 100
+            y: 350
         }
         //player size
         this.width = 30
@@ -38,8 +101,15 @@ class Player {
         }
     }
     draw() {
-        c.fillStyle = "green"
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        c.clearRect(0, 0, CANVAS_HEIGHT, CANVAS_WIDTH)
+        let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
+        let frameX = spriteWidth * position
+        let frameY = spriteAnimations[playerState].loc[position].y
+        c.drawImage(backgroundlayer1, 0, 0)
+        c.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight)
+        gameframe ++;
+        // c.fillStyle = "aqua"
+        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
     update() {
         this.draw()
@@ -60,24 +130,31 @@ class Platform{
             x,
             y
         }
-        this.width = 2580
-        this.height = 20
+        this.width = 280
+        this.height = 150
     }
     draw(){
-        c.fillStyle = "white"
+        c.fillStyle = "gray"
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
 
+
 const player = new Player()
 // const platform = new Platform()
-const platforms = [new Platform({
-    x: 250, y: 106
+const platforms = [
+    // new Platform({
+    // x: 250, y: 25}),
+new Platform({
+    x: 0, y: 525
 }), new Platform({
-    x: 0, y: 380
+    x: 258, y: 500
 }), new Platform({
-    x: 500, y: 380
-})]
+    x: 1030, y: 500
+}), new Platform({
+    x: 700, y: 525
+})
+]
 
 const keys = {
     right: {
@@ -85,24 +162,39 @@ const keys = {
     },
     left: {
         pressed: false
+    },
+    space: {
+        pressed: false
     }
 }
 
 let scrollOffset = 0
 
+let x = 0;
+
 function animate() {
-    requestAnimationFrame(animate)
-    c.clearRect(0, 0, canvas.width, canvas.height)
+    c.clearRect(0, 0, CANVAS_HEIGHT, CANVAS_WIDTH)
+    let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
+    let frameX = spriteWidth * position
+    let frameY = spriteAnimations[playerState].loc[position].y
+
+    c.drawImage(backgroundlayer1, x, 0)
+    x--;
+    c.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight)
+    gameframe ++;
     player.update()
     platforms.forEach(platform => {
         platform.draw()
     })
+    requestAnimationFrame(animate)
 
     if (keys.right.pressed && player.position.x < 400){
         player.velocity.x = 5
     }else if(keys.left.pressed && player.position.x > 100){
         player.velocity.x = -5
-    } else{
+    }else if (keys.space.pressed && player.position.x > 100){
+        player.velocity.y += 10
+    }else{
         player.velocity.x = 0
         if (keys.right.pressed){
             //makes platforms scroll
@@ -115,6 +207,12 @@ function animate() {
             platforms.forEach(platform => {
                 platform.position.x += 5
             })
+        } else if (keys.right.pressed){
+            //makes platforms scroll
+            scrollOffset += 5
+            platforms.forEach(platform => {
+                platform.position.x -= 5
+            })
         }
         console.log(scrollOffset)
     }
@@ -123,7 +221,7 @@ function animate() {
 
     // platform collision detecion
     platforms.forEach(platform => {
-    if (player.position.y + player.height < platform.position.y &&
+    if (player.position.y + player.height <= platform.position.y &&
         player.position.y + player.height + player.velocity.y
         >= platform.position.y && player.position.x + player.width
         >= platform.position.x && player.position.x <= platform.position.x
@@ -131,15 +229,15 @@ function animate() {
             player.velocity.y = 0
         }
     })
-    if (scrollOffset > 2000){
+    if (scrollOffset > 2190){
         console.log("you Win")
     }
 }
-
 animate()
+
 //keyCode is the number that you get when you press a key in the console
 window.addEventListener("keydown", ({keyCode}) => {
-    // console.log(keyCode)
+    console.log(keyCode)
     switch(keyCode) {
         case 68:
             console.log("right")
@@ -158,6 +256,11 @@ window.addEventListener("keydown", ({keyCode}) => {
         case 83:
             console.log("down")
             player.velocity.y += 20
+            break
+        case 32:
+            console.log("space")
+            keys.space.pressed = true
+            player.velocity.x += 10
             break
     }
     console.log(keys.right.pressed)
@@ -182,6 +285,11 @@ window.addEventListener("keyup", ({keyCode}) => {
         case 83:
             console.log("down")
             player.velocity.y += 20
+            break
+        case 32:
+            console.log("space")
+            keys.space.pressed = false
+            player.gravity = 0
             break
     }
     console.log(keys.right.pressed)
