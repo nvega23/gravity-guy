@@ -1,4 +1,4 @@
-let playerState = 'run'
+let playerState = 'idle'
 const dropDown = document.getElementById("animations")
 dropDown.addEventListener('change', function(e){
     playerState = e.target.value;
@@ -9,15 +9,15 @@ const c = canvas.getContext('2d')
 const CANVAS_WIDTH = canvas.width = 600
 const CANVAS_HEIGHT = canvas.width = 600
 
-const playerImage = new Image();
-playerImage.src = './src/images/shadow_dog.png'
+// const playerImage = new Image();
+// playerImage.src = './src/images/shadow_dog.png'
 
-const spriteWidth = 575
-const spriteHeight = 523
+const spriteWidth = 650
+const spriteHeight = 600
 
 let gameSpeed = 5
 const backgroundlayer1 = new Image();//same as getElementByImage()
-backgroundlayer1.src = '../src/images/sun.png'
+// backgroundlayer1.src = '../src/images/sun.png'
 const backgroundlayer2 = new Image();
 backgroundlayer2.src = '../src/images/2.png'
 const backgroundlayer3 = new Image();
@@ -96,8 +96,8 @@ class Player {
             y: 350
         }
         //player size
-        this.width = 30
-        this.height = 30
+        this.width = 150
+        this.height = 150
         //gravity
         //later we can implement code where if
         //in a space level, we turn the gravity off
@@ -107,16 +107,17 @@ class Player {
         }
     }
     draw() {
-        // c.clearRect(0, 0, CANVAS_HEIGHT, CANVAS_WIDTH)
-        // let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
-        // let frameX = spriteWidth * position
-        // let frameY = spriteAnimations[playerState].loc[position].y
-        // c.drawImage(backgroundlayer1, 0, 0)
-        // c.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight)
-        // gameframe ++;
-        c.fillStyle = "aqua"
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        const playerImage = new Image();
+        playerImage.src = './src/images/shadow_dog.png'
+        let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
+        let frameX = spriteWidth * position
+        let frameY = spriteAnimations[playerState].loc[position].y
+        gameframe ++;
+        c.drawImage(playerImage, this.position.x, this.position.y, this.width, this.height)
+        // c.fillStyle = "aqua"
+        // c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
+
     update() {
         this.draw()
         this.position.y += this.velocity.y
@@ -136,12 +137,15 @@ class Platform{
             x,
             y
         }
-        this.width = 2800
-        this.height = 150
+        this.width = 600
+        this.height = 300
     }
     draw(){
-        c.fillStyle = "white"
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+        // c.fillStyle = "white"
+        c.drawImage(plateformImage, this.position.x, this.position.y, this.width, this.height)
+    }
+    update(){
+        c.draw()
     }
 }
 
@@ -149,16 +153,18 @@ class Platform{
 const player = new Player()
 // const platform = new Platform()
 const platforms = [
-    // new Platform({
-    // x: 250, y: 25}),
 new Platform({
     x: 0, y: 500
+}),
+, new Platform({
+    x: 800, y: 200
+})
+, new Platform({
+    x: 450, y: 350
 }), new Platform({
-    x: 258, y: 500
+    x: 1400, y: 500
 }), new Platform({
-    x: 1030, y: 500
-}), new Platform({
-    x: 700, y: 525
+    x: 2000, y: 350
 })
 ]
 
@@ -191,7 +197,7 @@ class layer{
         this.x = 0;
         this.y = 0;
         this.width = 600;
-        this.height = 500;
+        this.height = 800;
         this.x2 = this.width;
         this.image = image
         this.speedModifier = speedModifier
@@ -214,17 +220,24 @@ class layer{
     }
 }
 
-const layer1 = new layer(backgroundlayer3, 1)
+// const layer1 = new layer(backgroundlayer1, 1)
+const layer2 = new layer(backgroundlayer2, 1)
+const layer3 = new layer(backgroundlayer3, 1)
+const layer4 = new layer(backgroundlayer4, 1)
 
 function animate() {
     c.clearRect(0, 0, CANVAS_HEIGHT, CANVAS_WIDTH)
-    layer1.update();
-    layer1.draw();
+    // layer1.update();
+    // layer1.draw();
+    layer2.update();
+    layer2.draw();
+    layer3.update();
+    layer3.draw();
+    layer4.update();
+    layer4.draw();
     let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
     let frameX = spriteWidth * position
     let frameY = spriteAnimations[playerState].loc[position].y
-    c.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight)
-    gameframe ++;
     player.update()
     platforms.forEach(platform => {
         platform.draw()
