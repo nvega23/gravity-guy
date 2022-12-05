@@ -12,8 +12,8 @@ const CANVAS_HEIGHT = canvas.width = 600
 // const playerImage = new Image();
 // playerImage.src = './src/images/shadow_dog.png'
 
-const spriteWidth = 650
-const spriteHeight = 600
+const spriteWidth = 575
+const spriteHeight = 523
 
 let gameSpeed = 5
 const backgroundlayer1 = new Image();//same as getElementByImage()
@@ -93,7 +93,7 @@ class Player {
     constructor() {
         this.position = {
             x: 100,
-            y: 350
+            y: 250
         }
         //player size
         this.width = 150
@@ -112,20 +112,29 @@ class Player {
         let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
         let frameX = spriteWidth * position
         let frameY = spriteAnimations[playerState].loc[position].y
+        // c.drawImage(playerImage, this.position.x, this.position.y, this.width, this.height)
+        //1: where sprite sheet starts(x coord),2: y coord,
+        //3: x coord where it finishes on the sprite sheet
+        //4: y coord where it finishes on the sprite sheet, 5: start x coord on canvas.
+        //6: start and y on canvas, 7: finishing x coord on canvas
+        //8: finishing y, canvas
+
+        c.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, this.position.x, this.position.y, this.width, this.height)
         gameframe ++;
-        c.drawImage(playerImage, this.position.x, this.position.y, this.width, this.height)
         // c.fillStyle = "aqua"
         // c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
-
     update() {
         this.draw()
         this.position.y += this.velocity.y
         this.position.x += this.velocity.x
+        console.log(this.position.x)
         if (this.position.y + this.height + this.velocity.y <= canvas.height){
             this.velocity.y += gravity
-        }else{
-            this.velocity.y = 0
+        }
+        else if (this.position.y >= 600){
+            [this.position.x, this.position.y] = [100, 250]
+            scrollOffset = 0
         }
         // this.velocity.y += gravity
     }
@@ -137,7 +146,7 @@ class Platform{
             x,
             y
         }
-        this.width = 600
+        this.width = 300
         this.height = 300
     }
     draw(){
@@ -146,6 +155,7 @@ class Platform{
     }
     update(){
         c.draw()
+        c.update()
     }
 }
 
@@ -154,14 +164,15 @@ const player = new Player()
 // const platform = new Platform()
 const platforms = [
 new Platform({
-    x: 0, y: 500
+    x:0, y: 500
 }),
 , new Platform({
-    x: 800, y: 200
+    x: 450, y: 500
 })
+// , new Platform({
+//     x: 450, y: 350
+// })
 , new Platform({
-    x: 450, y: 350
-}), new Platform({
     x: 1400, y: 500
 }), new Platform({
     x: 2000, y: 350
@@ -180,17 +191,7 @@ const keys = {
     }
 }
 
-let scrollOffset = 0
-
-// let x = 0;
-// let x2 = 550;
-// c.drawImage(backgroundlayer1, x, 0)
-// c.drawImage(backgroundlayer1, x2, 0)
-// //checks if the image is out of canvas
-// if (x < -600) x = 600 + x2 - gameSpeed;
-// else x -= gameSpeed;
-// if (x2 < -600) x2 = 600 + x - gameSpeed;
-// else x2 -= gameSpeed;
+var scrollOffset = 0
 
 class layer{
     constructor(image, speedModifier){
@@ -235,13 +236,13 @@ function animate() {
     layer3.draw();
     layer4.update();
     layer4.draw();
-    let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
-    let frameX = spriteWidth * position
-    let frameY = spriteAnimations[playerState].loc[position].y
-    player.update()
+    // let position = Math.floor(gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
+    // let frameX = spriteWidth * position
+    // let frameY = spriteAnimations[playerState].loc[position].y
     platforms.forEach(platform => {
         platform.draw()
     })
+    player.update()
     requestAnimationFrame(animate)
 
     if (keys.right.pressed && player.position.x < 400){
@@ -270,10 +271,8 @@ function animate() {
                 platform.position.x -= 5
             })
         }
-        console.log(scrollOffset)
+        // console.log(scrollOffset)
     }
-
-
 
     // platform collision detecion
     platforms.forEach(platform => {
@@ -285,8 +284,13 @@ function animate() {
             player.velocity.y = 0
         }
     })
+    //win condition
     if (scrollOffset > 2190){
         console.log("you Win")
+    }
+    // lose condition
+    if (player.position.y > canvas.height){
+        console.log('you lose')
     }
 }
 animate()
