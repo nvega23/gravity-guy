@@ -23,9 +23,9 @@ class Game{
                 x:0, y: 500
             }, this.ctx),
             , new Platform({
-                x: 550, y: 500
+                x: 0, y: -200
             },this.ctx), new Platform({
-                x: 1400, y: 500
+                x: 300, y: 300
             },this.ctx), new Platform({
                 x: 2000, y: 350
             },this.ctx)
@@ -71,7 +71,7 @@ class Game{
                 case 32:
                     console.log("space")
                     this.keys.space.pressed = true
-                    this.player.velocity.x += 10
+                    this.player.velocity.y = -20
                     break
             }
             console.log(this.keys.right.pressed)
@@ -100,7 +100,7 @@ class Game{
                 case 32:
                     console.log("space")
                     this.keys.space.pressed = false
-                    this.player.gravity = 0
+                    this.player.gravity = 20
                     break
             }
             console.log(this.keys.right.pressed)
@@ -108,11 +108,11 @@ class Game{
 
     }
     animate() {
+    this.ctx.clearRect(0, 0, this.CANVAS_HEIGHT, this.CANVAS_WIDTH)
     const layer1 = new Layer(this.backgroundlayer1, 1, this.gameSpeed, this.ctx)
     const layer2 = new Layer(this.backgroundlayer2, 1, this.gameSpeed, this.ctx)
     const layer3 = new Layer(this.backgroundlayer3, 1, this.gameSpeed, this.ctx)
     const layer4 = new Layer(this.backgroundlayer4, 1, this.gameSpeed, this.ctx)
-    this.ctx.clearRect(0, 0, this.CANVAS_HEIGHT, this.CANVAS_WIDTH)
     layer1.update();
     layer1.draw();
     layer2.update();
@@ -131,17 +131,18 @@ class Game{
                     x:0, y: 500
                 }, this.ctx),
                 , new Platform({
-                    x: 550, y: 500
+                    x: 0, y: -200
                 },this.ctx), new Platform({
-                    x: 1400, y: 500
+                    x: 300, y: 300
                 },this.ctx), new Platform({
                     x: 2000, y: 350
                 },this.ctx)
             ]
+        this.scrollOffset = 0
     }
     this.player.update()
     requestAnimationFrame(this.animate)
-
+    //makes platforms scroll
     if (this.keys.right.pressed && this.player.position.x < 100){
         this.player.velocity.x = 5
     }else if(this.keys.left.pressed && this.player.position.x > 100){
@@ -151,7 +152,6 @@ class Game{
     }else{
         this.player.velocity.x = 0
         if (this.keys.right.pressed){
-            //makes platforms scroll
             this.scrollOffset += 5
             this.platforms.forEach(platform => {
                 platform.position.x -= 5
@@ -177,12 +177,14 @@ class Game{
         this.player.position.y + this.player.height + this.player.velocity.y
         >= platform.position.y && this.player.position.x + this.player.width
         >= platform.position.x && this.player.position.x <= platform.position.x
-        + (platform.width - 45)){
+        + (platform.width - 45) && this.player.height <= platform.height){
+            //if i make 182: 0 = -5, it will make the character jump
             this.player.velocity.y = 0
         }
     })
     //win condition
     if (this.scrollOffset > 2190){
+        console.log(this.scrollOffset)
         console.log("you Win")
         alert('you win!')
     }

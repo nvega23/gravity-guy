@@ -12,13 +12,13 @@ class Player {
         this.height = 150
         this.position = {
             x: 100,
-            y: 250
+            y: 260
         }
         this.velocity = {
             x: 0,
             y: 0
         }
-        this.gravity = 1.9
+        this.gravity = 2
         this.image = document.getElementById('player')
         this.speed = 0
         this.maxSpeed = 10;
@@ -34,7 +34,7 @@ class Player {
         }
     }
     draw(context){
-        const playerState = 'run'
+        const playerState = 'idle'
         //changes sprite frame
         const staggerFrames = 5;
         const spriteAnimations = [];

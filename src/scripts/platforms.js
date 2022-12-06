@@ -8,7 +8,7 @@ class Platform{
             x,
             y
         }
-        this.width = 300
+        this.width = 3000
         this.height = 300
     }
     draw(){

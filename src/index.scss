@@ -3,7 +3,7 @@ body{
     margin: 0;
     background: black;
     // background-image: url(../src/images/hills.png);
-    // background-image: url(../src/images/1.png);
+    background-image: url(../src/images/1.png);
 }
 canvas{
     position: absolute;
@@ -15,6 +15,9 @@ canvas{
 }
 
 .controls{
+    font-family: cursive;
+    color: white;
+    background-color: black;
     position: absolute;
     z-index: 10;
     top: 100;
@@ -23,4 +26,12 @@ canvas{
 }
 .controls, select, option {
     font-size: 25px;
+}
+.title {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    height: 48px;
 }
