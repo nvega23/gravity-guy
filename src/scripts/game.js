@@ -11,14 +11,13 @@ class Game{
         this.player = new Player(this, ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = '../src/images/sun.png'
-        console.log(this.backgroundlayer1.src)
-        // this.backgroundlayer2 = new Image();
-        // this.backgroundlayer2.src = '../src/images/2.png'
-        // this.backgroundlayer3 = new Image();
-        // this.backgroundlayer3.src = '../src/images/3.png'
-        // this.backgroundlayer4 = new Image();
-        // this.backgroundlayer4.src = '../src/images/4.png'
+        this.backgroundlayer1.src = '../src/images/1.png'
+        this.backgroundlayer2 = new Image();
+        this.backgroundlayer2.src = '../src/images/2.png'
+        this.backgroundlayer3 = new Image();
+        this.backgroundlayer3.src = '../src/images/3.png'
+        this.backgroundlayer4 = new Image();
+        this.backgroundlayer4.src = '../src/images/4.png'
         this.platforms = [
             new Platform({
                 x:0, y: 500
@@ -33,7 +32,7 @@ class Game{
         ]
         this.keys = {
             right: {
-                pressed: true
+                pressed: false
             },
             left: {
                 pressed: false
@@ -109,20 +108,19 @@ class Game{
 
     }
     animate() {
-    // const layer1 = new Layer(this.backgroundlayer1, 1, this.gameSpeed, this.ctx)
-    // const layer2 = new Layer(this.backgroundlayer2, 1, this.gameSpeed, this.ctx)
-    // const layer3 = new Layer(this.backgroundlayer3, 1, this.gameSpeed, this.ctx)
-    // const layer4 = new Layer(this.backgroundlayer4, 1, this.gameSpeed, this.ctx)
+    const layer1 = new Layer(this.backgroundlayer1, 1, this.gameSpeed, this.ctx)
+    const layer2 = new Layer(this.backgroundlayer2, 1, this.gameSpeed, this.ctx)
+    const layer3 = new Layer(this.backgroundlayer3, 1, this.gameSpeed, this.ctx)
+    const layer4 = new Layer(this.backgroundlayer4, 1, this.gameSpeed, this.ctx)
     this.ctx.clearRect(0, 0, this.CANVAS_HEIGHT, this.CANVAS_WIDTH)
-    // layer1.update();
-    // layer1.draw();
-    // layer2.update();
-    // layer2.draw();
-    // layer3.update();
-    // layer3.draw();
-    // layer4.update();
-    // layer4.draw();
-    this.player.velocity.x = 1.5
+    layer1.update();
+    layer1.draw();
+    layer2.update();
+    layer2.draw();
+    layer3.update();
+    layer3.draw();
+    layer4.update();
+    layer4.draw();
     this.platforms.forEach(platform => {
         platform.draw()
     })
@@ -144,7 +142,7 @@ class Game{
     this.player.update()
     requestAnimationFrame(this.animate)
 
-    if (this.keys.right.pressed && this.player.position.x < 400){
+    if (this.keys.right.pressed && this.player.position.x < 100){
         this.player.velocity.x = 5
     }else if(this.keys.left.pressed && this.player.position.x > 100){
         this.player.velocity.x = -5
@@ -186,6 +184,7 @@ class Game{
     //win condition
     if (this.scrollOffset > 2190){
         console.log("you Win")
+        alert('you win!')
     }
     // lose condition
     if (this.player.position.y > this.CANVAS_HEIGHT){
