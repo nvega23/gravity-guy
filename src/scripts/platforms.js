@@ -8,8 +8,8 @@ class Platform{
             x,
             y
         }
-        this.width = 3000
-        this.height = 300
+        this.width = 250
+        this.height = 150
     }
     draw(){
         this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)

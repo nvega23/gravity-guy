@@ -1,0 +1,4 @@
+function blackHole(){
+    this.pos
+}
+

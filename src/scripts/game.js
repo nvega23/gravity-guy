@@ -1,3 +1,8 @@
+//canvas display hidden until button is hit, then display block
+// bindKeys(),
+//end game, reverse binding keys
+//make it where the start of platform makes you fall
+//platform tomorrow, blackhole
 import Player from './player'
 import Platform from './platforms'
 import Layer from './layers'
@@ -11,19 +16,22 @@ class Game{
         this.player = new Player(this, ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = '../src/images/1.png'
+        this.backgroundlayer1.src = '../src/images/4/1.png'
         this.backgroundlayer2 = new Image();
-        this.backgroundlayer2.src = '../src/images/2.png'
+        this.backgroundlayer2.src = '../src/images/4/2.png'
         this.backgroundlayer3 = new Image();
-        this.backgroundlayer3.src = '../src/images/3.png'
+        this.backgroundlayer3.src = '../src/images/4/3.png'
         this.backgroundlayer4 = new Image();
-        this.backgroundlayer4.src = '../src/images/4.png'
+        this.backgroundlayer4.src = '../src/images/4/4.png'
         this.platforms = [
             new Platform({
                 x:0, y: 500
             }, this.ctx),
+            new Platform({
+                x:0, y: -31
+            }, this.ctx)
             , new Platform({
-                x: 0, y: -200
+                x: 0, y: -30
             },this.ctx), new Platform({
                 x: 300, y: 300
             },this.ctx), new Platform({
@@ -100,7 +108,7 @@ class Game{
                 case 32:
                     console.log("space")
                     this.keys.space.pressed = false
-                    this.player.gravity = 20
+                    this.player.gravity = 0
                     break
             }
             console.log(this.keys.right.pressed)
@@ -130,8 +138,11 @@ class Game{
                 new Platform({
                     x:0, y: 500
                 }, this.ctx),
+                new Platform({
+                    x:0, y: -31
+                }, this.ctx)
                 , new Platform({
-                    x: 0, y: -200
+                    x: 0, y: -30
                 },this.ctx), new Platform({
                     x: 300, y: 300
                 },this.ctx), new Platform({
@@ -173,24 +184,29 @@ class Game{
 
     // platform collision detecion
     this.platforms.forEach(platform => {
-    if (this.player.position.y + this.player.height <= platform.position.y &&
-        this.player.position.y + this.player.height + this.player.velocity.y
-        >= platform.position.y && this.player.position.x + this.player.width
-        >= platform.position.x && this.player.position.x <= platform.position.x
-        + (platform.width - 45) && this.player.height <= platform.height){
-            //if i make 182: 0 = -5, it will make the character jump
-            this.player.velocity.y = 0
+        if (this.player.position.x <= platform.position.x + (platform.width - 45) &&
+            this.player.position.x + this.player.width >= platform.position.x &&
+            this.player.position.y < platform.position.y + platform.height &&
+            this.player.position.y + this.player.height >= platform.position.y) {
+             // collision detected!
+             this.player.velocity.y = 0
+            //  this.player.velocity.x = 0
         }
     })
     //win condition
-    if (this.scrollOffset > 2190){
+    if (this.scrollOffset >= 1090){
         console.log(this.scrollOffset)
-        console.log("you Win")
-        alert('you win!')
+        // alert('you win!')
     }
     // lose condition
     if (this.player.position.y > this.CANVAS_HEIGHT){
         console.log('you lose')
+    }
+    if (this.scrollOffset >= 0){
+        let score = this.scrollOffset
+        document.getElementById('output').innerHTML=score
+    }else{
+        score = 0
     }
 }
 

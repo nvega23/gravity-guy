@@ -4,12 +4,12 @@ class Player {
         this.ctx = ctx
         this.CANVAS_WIDTH = CANVAS_WIDTH
         this.CANVAS_HEIGHT = CANVAS_HEIGHT
-        this.spriteWidth = 575
-        this.spriteHeight = 523
+        this.spriteWidth = 50
+        this.spriteHeight = 38
         this.game = game;
         //player height
-        this.width = 150;
-        this.height = 150
+        this.width = 125;
+        this.height = 125
         this.position = {
             x: 100,
             y: 260
@@ -36,7 +36,7 @@ class Player {
     draw(context){
         const playerState = 'idle'
         //changes sprite frame
-        const staggerFrames = 5;
+        const staggerFrames = 25;
         const spriteAnimations = [];
         const animationStates = [
             {
@@ -44,39 +44,43 @@ class Player {
                 frames: 7,
             },
             {
+                name: 'run',
+                frames: 7,
+            },
+            {
                 name: 'jump',
                 frames: 7,
-            },
-            {
+            },   {
                 name: 'fall',
                 frames: 7,
-            },   {
-                name: 'run',
-                frames: 9,
             },
             {
-                name: 'dizzy',
-                frames: 5,
-            },
-            {
-                name: 'sit',
-                frames: 5,
-            },
-            {
-                name: 'roll',
+                name: 'standup',
                 frames: 7,
             },
             {
-                name: 'bite',
+                name: 'sword',
                 frames: 7,
             },
             {
-                name: 'ko',
-                frames: 10,
+                name: 'slash',
+                frames: 7,
             },
             {
-                name: 'gethit',
-                frames: 4,
+                name: 'slashMoveRight',
+                frames: 7,
+            },
+            {
+                name: 'prepareAttack',
+                frames: 7,
+            },
+            {
+                name: 'hit',
+                frames: 7,
+            },
+            {
+                name: 'dash',
+                frames: 2,
             }
         ];
         animationStates.forEach((state, index)=>{
@@ -90,9 +94,11 @@ class Player {
             }
             spriteAnimations[state.name] = frames;
         })
-        // console.log(spriteAnimations)
+
         const playerImage = new Image();
-        playerImage.src = './src/images/shadow_dog.png'
+        playerImage.src = './src/images/adventurer-Sheet.png'
+        // playerImage.style.transform = 'scaleX(-1)'
+        // console.log(playerImage)
         let position = Math.floor(this.gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
         let frameX = this.spriteWidth * position
         let frameY = spriteAnimations[playerState].loc[position].y

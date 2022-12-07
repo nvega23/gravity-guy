@@ -5,7 +5,7 @@ class Layer{
         this.x = 0;
         this.y = 0;
         this.width = 600;
-        this.height = 800;
+        this.height = 600;
         this.x2 = this.width;
         this.image = image
         this.speedModifier = speedModifier
@@ -23,7 +23,6 @@ class Layer{
         this.x2 = Math.floor(this.x2 - this.speed);
     }
     draw(){
-        // console.log(this.ctx)
         this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
         this.ctx.drawImage(this.image, this.x2, this.y, this.width, this.height)
     }
