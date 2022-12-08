@@ -14,13 +14,13 @@ class Game{
         this.score = 0
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = './src/images/lava.jpg'
+        this.backgroundlayer1.src = './images/lava.jpg'
         this.backgroundlayer2 = new Image();
-        this.backgroundlayer2.src = './src/images/7/4.png'
+        this.backgroundlayer2.src = './images/7/4.png'
         this.backgroundlayer3 = new Image();
-        this.backgroundlayer3.src = './src/images/7/2.png'
+        this.backgroundlayer3.src = './images/7/2.png'
         this.backgroundlayer4 = new Image();
-        this.backgroundlayer4.src = './src/images/7/3.png'
+        this.backgroundlayer4.src = './images/7/3.png'
         this.platforms = [
             new Platform({
                 x:0, y: 500
