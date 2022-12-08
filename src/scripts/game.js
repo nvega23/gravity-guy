@@ -1,10 +1,3 @@
-//canvas display hidden until button is hit, then display block
-// bindKeys(),
-//end game, reverse binding keys
-//platform tomorrow, blackhole
-//make a created by nestor
-//scroll === 2000
-
 import Player from './player'
 import Platform from './platforms'
 import Layer from './layers'
@@ -80,10 +73,13 @@ class Game{
                 x: 2600, y: -31
             },this.ctx)
             , new Platform({
-                x: 3800, y: -31
+                x: 2800, y: 500//last
             },this.ctx)
             , new Platform({
-                x: 2500, y: -31 //dce
+                x: 3000, y: 500//last
+            },this.ctx)
+            , new Platform({
+                x: 2500, y: -31
             },this.ctx)
             , new Platform({
                 x: 2500, y: 500
@@ -230,7 +226,10 @@ class Game{
                         x: 2600, y: -31
                     },this.ctx)
                     , new Platform({
-                        x: 3800, y: -31
+                        x: 2800, y: 500
+                    },this.ctx)
+                    , new Platform({
+                        x: 3000, y: 500
                     },this.ctx)
                     , new Platform({
                         x: 2500, y: -31 //dce
@@ -323,14 +322,14 @@ class Game{
         }
     })
     //win condition
-    if (this.scrollOffset >= 4000){
-        console.log(this.scrollOffset)
+    if (this.scrollOffset >= 3150){
         document.getElementById('win').innerHTML = this.win
         console.log('You Win!!!')
         cancelAnimationFrame(gameRun)
     }
     // lose condition
-    if (this.player.position.y > this.CANVAS_HEIGHT){
+    if (this.player.position.y > this.CANVAS_HEIGHT || this.player.position.x <= mid){
+        document.getElementById('endGame').innerHTML = this.endGame
         console.log('you lose')
         //implement if blackhole gets player, or player falls of canvas
     }

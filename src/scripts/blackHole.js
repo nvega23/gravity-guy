@@ -1,4 +1,3 @@
-//half the width, 262 + x pos, 262
 class blackHole {
     constructor(ctx, CANVAS_WIDTH, CANVAS_HEIGHT){
         this.gameframe = 0

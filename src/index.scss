@@ -5,7 +5,7 @@ body{
     // background-image: url(../src/images/hills.png);
     // background-image: url(../src/images/1.png);
 }
-#start, #gameOver{
+#start, #end{
     border: 5px solid black;
 }
 
@@ -83,24 +83,26 @@ canvas{
 .score{
   display: flex;
   justify-content: center;
+  margin: -40px;
 }
 .container{
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100px;
-  width: 100px;
+  align-items: center;
+  z-index: 10;
+  height: 50px;
+  width: 50px;
   margin: auto;
   background: url(../src/audio/2.mp3) no-repeat center center/cover;
 }
 
 .btn button{
-  width: 140px;
-  margin: 23px;
-  padding: 12px;
+  width: 100px;
+  height: 50px;
   background-color: black;
   color: #00E6F6;;
   cursor: pointer;
+  right: 80px;
 }
 
 // .win{
@@ -220,14 +222,18 @@ canvas{
     line-height: 88px;
   }
 }
-
-
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
 /* CSS */
 #endGame,
 #endGame:after {
   position: absolute;
+  z-index: 10;
   top: 50%;
-  left: 75%;
+  left: 7%;
   transform: translate(-50%, -50%);
   width: 150px;
   height: 76px;
@@ -240,7 +246,7 @@ canvas{
   letter-spacing: 3px;
   box-shadow: 6px 0px 0px #00E6F6;
   outline: transparent;
-  position: relative;
+  // position: relative;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;

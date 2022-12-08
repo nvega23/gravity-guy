@@ -1,4 +1,3 @@
-//bugs, huds wont go away when i start game, blackhole will not appear
 class Player {
     constructor(game, ctx, CANVAS_WIDTH, CANVAS_HEIGHT){
         this.gameframe = 0
