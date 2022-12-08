@@ -62,7 +62,7 @@ canvas {
 
 #hud {
   border: 2px solid #FF013C;
-  background-image: url(./images/blackHole.png);
+  background-image: url(/images/blackHole.png);
   position: absolute;
   top: 50%;
   left: 50%;
