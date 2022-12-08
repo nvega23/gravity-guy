@@ -87,7 +87,7 @@ class blackHole {
             spriteAnimations[state.name] = frames;
         })
         const blackholeImg = new Image()
-        blackholeImg.src = '/images/blackHole.png'
+        blackholeImg.src = './images/blackHole.png'
         let position = Math.floor(this.gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
         let frameX = this.spriteWidth * position
         let frameY = spriteAnimations[playerState].loc[position].y
