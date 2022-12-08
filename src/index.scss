@@ -61,7 +61,7 @@ canvas{
 }
 #hud{
     border: 2px solid #FF013C;
-    background-image: url(../src/images/blackHole.png);
+    background-image: url(./images/blackHole.png);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -93,7 +93,7 @@ canvas{
   height: 50px;
   width: 50px;
   margin: auto;
-  background: url(../src/audio/2.mp3) no-repeat center center/cover;
+  background: url(./src/audio/2.mp3) no-repeat center center/cover;
 }
 
 .btn button{
