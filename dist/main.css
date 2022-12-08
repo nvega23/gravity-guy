@@ -107,6 +107,17 @@ canvas {
   right: 80px;
 }
 
+.win {
+  position: absolute;
+  top: 10%;
+  right: 38%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 75px;
+  color: white;
+  background: linear-gradient(45deg, transparent 5%);
+}
+
 /* CSS */
 #start,
 #start:after {

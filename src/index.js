@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     const end = document.getElementById('endGame')
     const gcontrols = document.getElementById('gravity')
     const score = document.getElementById('output')
-    const win = document.getElementById('win')
+    // const win = document.getElementById('win')
     const playSong = document.getElementById('play')
     const pauseSong = document.getElementById('pause')
     let music = new Audio()
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         hud.classList.remove('hidden')
         score.classList.add('hidden')
         gcontrols.classList.add('hidden')
-        win.classList.add('hidden')
+        // win.classList.add('hidden')
     })
 })
 

@@ -8,12 +8,10 @@ class Game{
         this.CANVAS_WIDTH = CANVAS_WIDTH
         this.CANVAS_HEIGHT = CANVAS_HEIGHT
         this.scrollOffset = 0
-        this.endGame = false
         this.ctx = ctx
         this.player = new Player(this, ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
         this.blackHole = new blackHole(ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
         this.score = 0
-        this.win = this.score
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
         this.backgroundlayer1.src = '../src/images/lava.jpg'
@@ -109,7 +107,6 @@ class Game{
     endGame(){
         if (this.scrollOffset <= 200){
             this.endGame === true
-            console.log(this.endGame)
         }
     }
     bindKeys(){
@@ -323,8 +320,10 @@ class Game{
     })
     //win condition
     if (this.scrollOffset >= 3100){
-        document.getElementById('win').innerHTML = this.win
-        console.log('You Win!!!')
+        this.score = this.scrollOffset
+        let winLabel = document.getElementById('win')
+        winLabel.style.display = 'block'
+        // console.log('You Win!!!')
         cancelAnimationFrame(gameRun)
     }
     // lose condition
