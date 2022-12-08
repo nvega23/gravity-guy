@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     const playSong = document.getElementById('play')
     const pauseSong = document.getElementById('pause')
     let music = new Audio()
-    music.src = '../src/audio/2.mp3'
+    music.src = './src/audio/2.mp3'
     music.volume = 0.08
     playSong.addEventListener('click', ()=>{
         music.play()
