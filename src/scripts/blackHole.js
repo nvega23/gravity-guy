@@ -23,7 +23,7 @@ class blackHole {
     }
     update(input){
         this.draw()
-        this.position.x += 1
+        this.position.x += 5
     }
     draw(context){
         const playerState = 'run'
