@@ -1,3 +1,4 @@
+//bugs, huds wont go away when i start game, blackhole will not appear
 class Player {
     constructor(game, ctx, CANVAS_WIDTH, CANVAS_HEIGHT){
         this.gameframe = 0
@@ -12,7 +13,7 @@ class Player {
         this.height = 125
         this.position = {
             x: 100,
-            y: 260
+            y: 375
         }
         this.velocity = {
             x: 0,
@@ -25,7 +26,6 @@ class Player {
     }
     update(input){
         this.draw()
-        console.log(this.game.scrollOffset)
         this.position.y += this.velocity.y
         this.position.x += this.velocity.x
         // console.log(this.position.x)
@@ -34,9 +34,9 @@ class Player {
         }
     }
     draw(context){
-        const playerState = 'idle'
+        const playerState = 'run'
         //changes sprite frame
-        const staggerFrames = 25;
+        const staggerFrames = 7;
         const spriteAnimations = [];
         const animationStates = [
             {
@@ -94,14 +94,14 @@ class Player {
             }
             spriteAnimations[state.name] = frames;
         })
-
         const playerImage = new Image();
         playerImage.src = './src/images/adventurer-Sheet.png'
-        // playerImage.style.transform = 'scaleX(-1)'
-        // console.log(playerImage)
+        const blackholeImg = new Image()
+        blackholeImg.src = './src/images/blackHole.png'
         let position = Math.floor(this.gameframe / staggerFrames) % spriteAnimations[playerState].loc.length
         let frameX = this.spriteWidth * position
         let frameY = spriteAnimations[playerState].loc[position].y
+        // this.ctx.drawImage(blackholeImg, frameX, frameY, this.spriteWidth, this.spriteHeight, this.position.x, this.position.y, this.width, this.height)
         this.ctx.drawImage(playerImage, frameX, frameY, this.spriteWidth, this.spriteHeight, this.position.x, this.position.y, this.width, this.height)
         this.gameframe++;
     }

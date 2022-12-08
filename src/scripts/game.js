@@ -1,22 +1,29 @@
 //canvas display hidden until button is hit, then display block
 // bindKeys(),
 //end game, reverse binding keys
-//make it where the start of platform makes you fall
 //platform tomorrow, blackhole
+//make a created by nestor
+//scroll === 2000
+
 import Player from './player'
 import Platform from './platforms'
 import Layer from './layers'
+import blackHole from './blackHole.js'
 
 class Game{
     constructor(ctx, CANVAS_WIDTH, CANVAS_HEIGHT){
         this.CANVAS_WIDTH = CANVAS_WIDTH
         this.CANVAS_HEIGHT = CANVAS_HEIGHT
         this.scrollOffset = 0
+        this.endGame = false
         this.ctx = ctx
         this.player = new Player(this, ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
+        this.blackHole = new blackHole(ctx, CANVAS_WIDTH, CANVAS_HEIGHT)
+        this.score = 0
+        this.win = this.score
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = '../src/images/4/1.png'
+        this.backgroundlayer1.src = '../src/images/1.png'
         this.backgroundlayer2 = new Image();
         this.backgroundlayer2.src = '../src/images/4/2.png'
         this.backgroundlayer3 = new Image();
@@ -31,11 +38,61 @@ class Game{
                 x:0, y: -31
             }, this.ctx)
             , new Platform({
-                x: 0, y: -30
-            },this.ctx), new Platform({
-                x: 300, y: 300
-            },this.ctx), new Platform({
-                x: 2000, y: 350
+                x: 200, y: 500
+            },this.ctx),
+            new Platform({
+                x: 500, y: 350
+            },this.ctx)
+            , new Platform({
+                x: 800, y: -31
+            },this.ctx)
+            , new Platform({
+                x: 1000, y: -31
+            },this.ctx)
+            , new Platform({
+                x: 1500, y: -31 //dce
+            },this.ctx)
+            , new Platform({
+                x: 1500, y: 500
+            },this.ctx)
+            , new Platform({
+                x: 1300, y: 500
+            },this.ctx)
+            , new Platform({
+                x: 1800, y: 350//odd one
+            },this.ctx), //new
+            new Platform({
+                x:2150, y: 500
+            }, this.ctx),
+            new Platform({
+                x:2150, y: -31
+            }, this.ctx)
+            , new Platform({
+                x: 2400, y: -31
+            },this.ctx),
+            new Platform({
+                x: 2500, y: 350
+            },this.ctx),
+            new Platform({
+                x: 2500, y: -31
+            },this.ctx)
+            , new Platform({
+                x: 2600, y: -31
+            },this.ctx)
+            , new Platform({
+                x: 3800, y: -31
+            },this.ctx)
+            , new Platform({
+                x: 2500, y: -31 //dce
+            },this.ctx)
+            , new Platform({
+                x: 2500, y: 500
+            },this.ctx)
+            , new Platform({
+                x: 2300, y: 500
+            },this.ctx)
+            , new Platform({
+                x: 2500, y: 350
             },this.ctx)
         ]
         this.keys = {
@@ -52,6 +109,12 @@ class Game{
         this.animate = this.animate.bind(this)
         this.animate()
         this.bindKeys()
+    }
+    endGame(){
+        if (this.scrollOffset <= 200){
+            this.endGame === true
+            console.log(this.endGame)
+        }
     }
     bindKeys(){
         //keyCode is the number that you get when you press a key in the console
@@ -115,6 +178,77 @@ class Game{
         })
 
     }
+    reset(){
+            [this.player.position.x, this.player.position.y] = [100, 320]
+                this.platforms = [
+                    new Platform({
+                        x:0, y: 500
+                    }, this.ctx),
+                    new Platform({
+                        x:0, y: -31
+                    }, this.ctx)
+                    , new Platform({
+                        x: 200, y: 500
+                    },this.ctx),
+                    new Platform({
+                        x: 500, y: 350
+                    },this.ctx)
+                    , new Platform({
+                        x: 800, y: -31
+                    },this.ctx)
+                    , new Platform({
+                        x: 1000, y: -31
+                    },this.ctx)
+                    , new Platform({
+                        x: 1500, y: -31 //dce
+                    },this.ctx)
+                    , new Platform({
+                        x: 1500, y: 500
+                    },this.ctx)
+                    , new Platform({
+                        x: 1300, y: 500
+                    },this.ctx)
+                    , new Platform({
+                        x: 1800, y: 350
+                    },this.ctx), //new
+                    new Platform({
+                        x:2150, y: 500
+                    }, this.ctx),
+                    new Platform({
+                        x:2150, y: -31
+                    }, this.ctx)
+                    , new Platform({
+                        x: 2400, y: -31
+                    },this.ctx),
+                    new Platform({
+                        x: 2500, y: 350
+                    },this.ctx),
+                    new Platform({
+                        x: 2500, y: -31
+                    },this.ctx)
+                    , new Platform({
+                        x: 2600, y: -31
+                    },this.ctx)
+                    , new Platform({
+                        x: 3800, y: -31
+                    },this.ctx)
+                    , new Platform({
+                        x: 2500, y: -31 //dce
+                    },this.ctx)
+                    , new Platform({
+                        x: 2500, y: 500
+                    },this.ctx)
+                    , new Platform({
+                        x: 2300, y: 500
+                    },this.ctx)
+                    , new Platform({
+                        x: 2500, y: 350
+                    },this.ctx)
+                ]
+            this.blackHole.position.x = -500
+            this.scrollOffset = 0
+        }
+
     animate() {
     this.ctx.clearRect(0, 0, this.CANVAS_HEIGHT, this.CANVAS_WIDTH)
     const layer1 = new Layer(this.backgroundlayer1, 1, this.gameSpeed, this.ctx)
@@ -133,26 +267,12 @@ class Game{
         platform.draw()
     })
     if (this.player.position.y >= 600){
-        [this.player.position.x, this.player.position.y] = [100, 250]
-            this.platforms = [
-                new Platform({
-                    x:0, y: 500
-                }, this.ctx),
-                new Platform({
-                    x:0, y: -31
-                }, this.ctx)
-                , new Platform({
-                    x: 0, y: -30
-                },this.ctx), new Platform({
-                    x: 300, y: 300
-                },this.ctx), new Platform({
-                    x: 2000, y: 350
-                },this.ctx)
-            ]
-        this.scrollOffset = 0
+        this.reset()
     }
+    this.blackHole.update()
     this.player.update()
-    requestAnimationFrame(this.animate)
+    const gameRun = requestAnimationFrame(this.animate);
+
     //makes platforms scroll
     if (this.keys.right.pressed && this.player.position.x < 100){
         this.player.velocity.x = 5
@@ -167,20 +287,29 @@ class Game{
             this.platforms.forEach(platform => {
                 platform.position.x -= 5
             })
+            this.blackHole.position.x -= 5
         } else if (this.keys.left.pressed){
             this.scrollOffset -= 5
             this.platforms.forEach(platform => {
                 platform.position.x += 5
             })
+            this.blackHole.position.x += 5
         } else if (this.keys.right.pressed){
             //makes this.platforms scroll
             this.scrollOffset += 5
             this.platforms.forEach(platform => {
                 platform.position.x -= 5
             })
+            this.blackHole.position.x -= 5
         }
-        // console.log(this.scrollOffset)
     }
+
+    const mid = (this.blackHole.width / 2) + this.blackHole.position.x
+    if (this.player.position.x <= mid){
+        console.log('black hole gotcha')
+        this.reset()
+    }
+
 
     // platform collision detecion
     this.platforms.forEach(platform => {
@@ -190,26 +319,28 @@ class Game{
             this.player.position.y + this.player.height >= platform.position.y) {
              // collision detected!
              this.player.velocity.y = 0
-            //  this.player.velocity.x = 0
+             this.player.velocity.x = 0
         }
     })
     //win condition
-    if (this.scrollOffset >= 1090){
+    if (this.scrollOffset >= 4000){
         console.log(this.scrollOffset)
-        // alert('you win!')
+        document.getElementById('win').innerHTML = this.win
+        console.log('You Win!!!')
+        cancelAnimationFrame(gameRun)
     }
     // lose condition
     if (this.player.position.y > this.CANVAS_HEIGHT){
         console.log('you lose')
+        //implement if blackhole gets player, or player falls of canvas
     }
     if (this.scrollOffset >= 0){
-        let score = this.scrollOffset
-        document.getElementById('output').innerHTML=score
+        this.score = this.scrollOffset
+        document.getElementById('output').innerHTML=this.score
     }else{
-        score = 0
+        this.score = 0
     }
 }
-
 }
 
 export default Game
