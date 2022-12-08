@@ -1,5 +1,6 @@
 const blackholeImg = new Image()
 blackholeImg.src = './images/blackhole.png'
+
 class blackHole {
     constructor(ctx, CANVAS_WIDTH, CANVAS_HEIGHT){
         this.gameframe = 0

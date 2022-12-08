@@ -104,11 +104,7 @@ class Game{
         this.animate()
         this.bindKeys()
     }
-    endGame(){
-        if (this.scrollOffset <= 200){
-            this.endGame === true
-        }
-    }
+
     bindKeys(){
         //keyCode is the number that you get when you press a key in the console
         window.addEventListener("keydown", ({keyCode}) => {
@@ -323,15 +319,14 @@ class Game{
         this.score = this.scrollOffset
         let winLabel = document.getElementById('win')
         winLabel.style.display = 'block'
-        // console.log('You Win!!!')
         cancelAnimationFrame(gameRun)
     }
     // lose condition
-    if (this.player.position.y > this.CANVAS_HEIGHT || this.player.position.x <= mid){
-        document.getElementById('endGame').innerHTML = this.endGame
-        console.log('you lose')
-        //implement if blackhole gets player, or player falls of canvas
-    }
+    // if (this.player.position.y > this.CANVAS_HEIGHT || this.player.position.x <= mid){
+    //     document.getElementById('endGame').innerHTML = this.endGame
+    //     console.log('you lose')
+    //     //implement if blackhole gets player, or player falls of canvas
+    // }
     if (this.scrollOffset >= 0){
         this.score = this.scrollOffset
         document.getElementById('output').innerHTML=this.score
