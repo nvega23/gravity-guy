@@ -16,13 +16,13 @@ class Game{
         this.win = this.score
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = '../src/images/1.png'
+        this.backgroundlayer1.src = '../src/images/lava.jpg'
         this.backgroundlayer2 = new Image();
-        this.backgroundlayer2.src = '../src/images/4/2.png'
+        this.backgroundlayer2.src = '../src/images/7/4.png'
         this.backgroundlayer3 = new Image();
-        this.backgroundlayer3.src = '../src/images/4/3.png'
+        this.backgroundlayer3.src = '../src/images/7/2.png'
         this.backgroundlayer4 = new Image();
-        this.backgroundlayer4.src = '../src/images/4/4.png'
+        this.backgroundlayer4.src = '../src/images/7/3.png'
         this.platforms = [
             new Platform({
                 x:0, y: 500
@@ -322,7 +322,7 @@ class Game{
         }
     })
     //win condition
-    if (this.scrollOffset >= 3150){
+    if (this.scrollOffset >= 3100){
         document.getElementById('win').innerHTML = this.win
         console.log('You Win!!!')
         cancelAnimationFrame(gameRun)
