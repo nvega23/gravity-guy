@@ -108,62 +108,48 @@ class Game{
     bindKeys(){
         //keyCode is the number that you get when you press a key in the console
         window.addEventListener("keydown", ({keyCode}) => {
-            console.log(keyCode)
             switch(keyCode) {
                 case 68:
-                    console.log("right")
                     this.player.velocity.x = 1
                     this.keys.right.pressed = true
                     break
                 case 65:
-                    console.log("left")
                     this.keys.left.pressed = true
                     this.player.velocity.x = -1
                     break
                 case 87:
-                    console.log("up")
                     this.player.velocity.y -= 20
                     break
                 case 83:
-                    console.log("down")
                     this.player.velocity.y += 20
                     break
                 case 32:
-                    console.log("space")
                     this.keys.space.pressed = true
                     this.player.velocity.y = -20
                     break
             }
-            console.log(this.keys.right.pressed)
         })
         window.addEventListener("keyup", ({keyCode}) => {
-            // console.log(keyCode)
             switch(keyCode) {
                 case 68:
-                    console.log("right")
                     this.keys.right.pressed = false
                     this.player.velocity.x = 0
                     break
                 case 65:
-                    console.log("left")
                     this.keys.left.pressed = false
                     this.player.velocity.x = 0
                     break
                 case 87:
-                    console.log("up")
                     this.player.velocity.y -= 20
                     break
                 case 83:
-                    console.log("down")
                     this.player.velocity.y += 20
                     break
                 case 32:
-                    console.log("space")
                     this.keys.space.pressed = false
                     this.player.gravity = 0
                     break
             }
-            console.log(this.keys.right.pressed)
         })
 
     }
@@ -298,7 +284,7 @@ class Game{
 
     const mid = (this.blackHole.width / 2) + this.blackHole.position.x
     if (this.player.position.x <= mid){
-        console.log('black hole gotcha')
+        alert("blackhole got you!")
         this.reset()
     }
 
@@ -321,12 +307,6 @@ class Game{
         winLabel.style.display = 'block'
         cancelAnimationFrame(gameRun)
     }
-    // lose condition
-    // if (this.player.position.y > this.CANVAS_HEIGHT || this.player.position.x <= mid){
-    //     document.getElementById('endGame').innerHTML = this.endGame
-    //     console.log('you lose')
-    //     //implement if blackhole gets player, or player falls of canvas
-    // }
     if (this.scrollOffset >= 0){
         this.score = this.scrollOffset
         document.getElementById('output').innerHTML=this.score
