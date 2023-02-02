@@ -2,7 +2,7 @@ class Platform{
     constructor({x, y}, ctx){
         this.ctx = ctx
         this.plateformImage = new Image()
-        this.plateformImage.src = './images/background.png'
+        this.plateformImage.src = '../images/Pads/pad1.png'
 
         this.position = {
             x,
