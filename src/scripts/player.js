@@ -12,7 +12,7 @@ class Player {
         this.height = 125
         this.position = {
             x: 100,
-            y: 375
+            y: 370
         }
         this.velocity = {
             x: 0,

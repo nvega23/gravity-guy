@@ -293,7 +293,7 @@ class Game{
     this.platforms.forEach(platform => {
         if (this.player.position.x <= platform.position.x + (platform.width - 45) &&
             this.player.position.x + this.player.width >= platform.position.x &&
-            this.player.position.y < platform.position.y + platform.height &&
+            this.player.position.y < platform.position.y + (platform.height - 10) &&
             this.player.position.y + this.player.height >= platform.position.y) {
              // collision detected!
              this.player.velocity.y = 0
