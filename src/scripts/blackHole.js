@@ -33,7 +33,7 @@ class blackHole {
         const animationStates = [
             {
                 name: 'idle',
-                frames: 7,
+                frames: 4,
             },
             {
                 name: 'run',
