@@ -164,8 +164,8 @@ canvas{
   user-select:none;
   -webkit-user-select:none;
   touch-action:manipulation;
-  margin-top: -235px;
-  margin-left: 268px;
+  margin-top: -349px;
+  margin-left: -145px;
   transform: rotate(90deg);
   /* rotate: 45deg; */
 }
