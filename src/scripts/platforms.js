@@ -8,12 +8,15 @@ class Platform{
         }
         this.width = 250
         this.height = 150
-        this.plateformImage.onload = () => {
+        // this.plateformImage.onload = () => {
             // const img = await loadImage('../images/background.png')
-            this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
-            console.log(this.plateformImage)
-        }
-        this.plateformImage.src = '../images/background.png'
+        // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
+        // console.log(this.plateformImage)
+        // }
+        // var img = new Image;
+        // img.src = strDataURI
+        this.plateformImage.src = './images/background.png'
+        // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
     }
     draw(){
         this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)

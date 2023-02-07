@@ -285,7 +285,7 @@ class Game{
 
     const mid = (this.blackHole.width / 2) + this.blackHole.position.x
     if (this.player.position.x <= mid){
-        alert("blackhole got you!")
+        // alert("blackhole got you!")
         this.reset()
     }
 
