@@ -3,13 +3,16 @@ class Platform{
         this.ctx = ctx
         this.plateformImage = new Image()
         this.plateformImage.src = '../images/background.png'
-        console.log(this.plateformImage)
-        this.position = {
-            x,
-            y
+        this.plateformImage.onload = () => {
+            // const img = await loadImage('../images/background.png')
+            console.log(this.plateformImage)
+            this.position = {
+                x,
+                y
+            }
+            this.width = 250
+            this.height = 150
         }
-        this.width = 250
-        this.height = 150
     }
     draw(){
         this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
