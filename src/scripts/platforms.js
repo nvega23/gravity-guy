@@ -15,7 +15,7 @@ class Platform{
         // }
         // var img = new Image;
         // img.src = strDataURI
-        this.plateformImage.src = '../images/background.png'
+        this.plateformImage.src = '../../images/background.png'
         // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
     }
     draw(){
