@@ -15,7 +15,7 @@ class Platform{
         // }
         // var img = new Image;
         // img.src = strDataURI
-        this.plateformImage.src = '../../images/background.png'
+        this.plateformImage.src = 'https://github.com/nvega23/gravity-guy/blob/main/images/background.png?raw=true'
         // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
     }
     draw(){
