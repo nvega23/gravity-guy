@@ -8,15 +8,7 @@ class Platform{
         }
         this.width = 250
         this.height = 150
-        // this.plateformImage.onload = () => {
-            // const img = await loadImage('../images/background.png')
-        // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
-        // console.log(this.plateformImage)
-        // }
-        // var img = new Image;
-        // img.src = strDataURI
         this.plateformImage.src = 'https://raw.githubusercontent.com/nvega23/gravity-guy/main/images/Pads/pad1.png'
-        // this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
     }
     draw(){
         this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)

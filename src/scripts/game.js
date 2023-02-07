@@ -100,7 +100,6 @@ class Game{
                 pressed: false
             }
         }
-        console.log(this.platforms)
         this.animate = this.animate.bind(this)
         this.animate()
         this.bindKeys()
