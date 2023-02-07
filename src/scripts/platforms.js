@@ -2,8 +2,8 @@ class Platform{
     constructor({x, y}, ctx){
         this.ctx = ctx
         this.plateformImage = new Image()
-        this.plateformImage.src = '../images/Pads/pad1.png'
-
+        this.plateformImage.src = '../images/background.png'
+        console.log(this.plateformImage)
         this.position = {
             x,
             y
@@ -19,4 +19,5 @@ class Platform{
         this.ctx.update()
     }
 }
-export default Platform
+
+export default Platform;
