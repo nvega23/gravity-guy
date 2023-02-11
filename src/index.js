@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         play.classList.add('hidden')
         hud.classList.add('hidden')
         gcontrols.classList.remove('hidden')
+        end.classList.add('hidden')
     })
     end.addEventListener('click', () => {
         canvas.classList.add('hidden')
@@ -40,5 +41,3 @@ document.addEventListener('DOMContentLoaded', () =>{
         // win.classList.add('hidden')
     })
 })
-
-//game over reset, you win or lose

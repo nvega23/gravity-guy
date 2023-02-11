@@ -1,6 +1,10 @@
 body{
   background-color: rgba(0, 0, 0, 0.788);
-  background-image: url(../images/gameb.jpg);
+  background-image: url(../images/gameb.jpg) no-repeat center center;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
   height: 400px;
   // border: 3px solid aqua;
   display: flex;
@@ -197,6 +201,7 @@ glitch{0%{clip-path:var(--slice-1);transform:translate(-20px, -10px)}10%{clip-pa
   touch-action:manipulation;
   margin-top: -320px;
   margin-left: 602.5px;
+  z-index: 1;
   // transform: rotate(90deg);
   /* rotate: 45deg; */
 }
@@ -241,6 +246,7 @@ glitch{0%{clip-path:var(--slice-1);transform:translate(-20px, -10px)}10%{clip-pa
   width:200px;
   height:86px;
   line-height:88px;
+  z-index: 1;
 }}
 
 .play{
