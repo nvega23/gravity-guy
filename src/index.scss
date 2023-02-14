@@ -63,7 +63,7 @@ canvas{
   color: white;
   position:absolute;
   display:flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content:center;
   align-items:center;
   width:300px;
@@ -77,6 +77,7 @@ canvas{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 150px;
 }
 
 #hud{
@@ -196,12 +197,10 @@ canvas{
   color: white;
   width: 200px;
   height: 45px;
-  // margin-top: 175px;
   z-index: 1;
-  // position: absolute;
   display: flex;
-  margin-top: -747px;
-  margin-left: 195px;
+  // margin-top: -747px;
+  // margin-left: 195px;
   justify-content: center;
   align-items: center;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -211,16 +210,18 @@ canvas{
 #endGame{
   cursor: pointer;
   background-color: #00E6F6;
+  color: #fff;
   width: 200px;
   height: 45px;
-  margin-top: 175px;
-  z-index: 1;
-  position: absolute;
+  // margin-top: 175px;
+  // margin-top: -50px;
+  // margin-left: 200px;
+  // z-index: 1;
+  // position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 175px;
-  // font-family: "Trebuchet MS", Helvetica, sans-serif;
+  // margin-top: 175px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   display: hidden;
 }
