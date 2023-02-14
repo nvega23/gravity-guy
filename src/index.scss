@@ -59,10 +59,11 @@ canvas{
 }
 
 #gravityControls{
+  z-index:1;
   color: white;
   position:absolute;
-  z-index:1;
   display:flex;
+  flex-direction: column-reverse;
   justify-content:center;
   align-items:center;
   width:300px;
@@ -70,6 +71,12 @@ canvas{
   background: rgba(255, 255, 255, 0.061);
   backdrop-filter: blur(5px);
   background:linear-gradient(45deg, transparent 5%);
+}
+
+.gravityControlsText{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #hud{
@@ -114,24 +121,23 @@ canvas{
 .buttonContainer{
   display:flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content:space-between;
   align-items:center;
   position: fixed;
-  margin-top: 50px;
+  margin-top: 35px;
   z-index:10;
-  height:50px;
-  width:50px;
-  margin:auto;
+  height:25px;
+  width: 435px;
   background:url(./src/audio/2.mp3) no-repeat center center/cover
 }
 .btn button{
-  width:100px;
+  // width:50px;
   height:50px;
   background-color:#000;
   color:#00e6f6;
-  cursor:pointer;
   margin-bottom: 50px;
-  margin: 150px;
+  cursor: pointer;
+  // margin: 150px;
   // right:80px
 }
 .win{
@@ -146,114 +152,147 @@ canvas{
   z-index: 1;
 }
 
-#start,#start:after{
-  // top: 54px;
-  width:150px;
-  height:76px;
-  line-height:78px;
-  font-size:20px;
-  font-family:"Bebas Neue",sans-serif;
-  background:linear-gradient(45deg, transparent 5%, #FF013C 5%);
-  border:0;
-  color:#fff;
-  letter-spacing:3px;
-  box-shadow:6px 0px 0px #00e6f6;
-  outline:rgba(0,0,0,0);
-  position:relative;
-  right: -56px;
-  user-select:none;
-  -webkit-user-select:none;
-  touch-action:manipulation;
-  margin-top: -768px;
-  margin-left: 545px;
-  // transform: rotate(90deg);
+// #start,#start:after{
+//   // top: 54px;
+//   cursor: pointer;
+
+//   width:150px;
+//   height:76px;
+//   line-height:78px;
+//   font-size:20px;
+//   font-family:"Bebas Neue",sans-serif;
+//   background:linear-gradient(45deg, transparent 5%, #FF013C 5%);
+//   border:0;
+//   color:#fff;
+//   letter-spacing:3px;
+//   box-shadow:6px 0px 0px #00e6f6;
+//   outline:rgba(0,0,0,0);
+//   position:relative;
+//   right: -56px;
+//   user-select:none;
+//   -webkit-user-select:none;
+//   touch-action:manipulation;
+//   margin-top: -768px;
+//   margin-left: 545px;
+//   // transform: rotate(90deg);
+// }
+
+// #start:after{--slice-0: inset(50% 50% 50% 50%);--slice-1: inset(80% -6px 0 0);--slice-2: inset(50% -6px 30% 0);--slice-3: inset(10% -6px 85% 0);--slice-4: inset(40% -6px 43% 0);--slice-5: inset(80% -6px 5% 0);content:"ALTERNATE TEXT";display:block;position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);text-shadow:-3px -3px 0px #f8f005,3px 3px 0px #00e6f6;clip-path:var(--slice-0)}#start:hover:after{animation:1s glitch;animation-timing-function:steps(2, end)}
+// @keyframes
+// glitch{0%{clip-path:var(--slice-1);transform:translate(-20px, -10px)}10%{clip-path:var(--slice-3);transform:translate(10px, 10px)}20%{clip-path:var(--slice-1);transform:translate(-10px, 10px)}30%{clip-path:var(--slice-3);transform:translate(0px, 5px)}40%{clip-path:var(--slice-2);transform:translate(-5px, 0px)}50%{clip-path:var(--slice-3);transform:translate(5px, 0px)}60%{clip-path:var(--slice-4);transform:translate(5px, 10px)}70%{clip-path:var(--slice-2);transform:translate(-10px, 10px)}80%{clip-path:var(--slice-5);transform:translate(20px, -10px)}90%{clip-path:var(--slice-1);transform:translate(-10px, 0px)}100%{clip-path:var(--slice-1);transform:translate(0)}}@media(min-width: 768px)
+// {#start,#start:after{
+//   width:200px;
+//   height:86px;
+//   line-height:88px;
+//   margin-left: 0px;
+//   // margin-top: -580px;
+//   margin-top: -573.5px;
+//   margin-left: 545px;
+// }}
+
+#start{
+  cursor: pointer;
+  background-color: #00E6F6;
+  color: white;
+  width: 200px;
+  height: 45px;
+  // margin-top: 175px;
+  z-index: 1;
+  // position: absolute;
+  display: flex;
+  margin-top: -747px;
+  margin-left: 195px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: hidden;
 }
 
-#start:after{--slice-0: inset(50% 50% 50% 50%);--slice-1: inset(80% -6px 0 0);--slice-2: inset(50% -6px 30% 0);--slice-3: inset(10% -6px 85% 0);--slice-4: inset(40% -6px 43% 0);--slice-5: inset(80% -6px 5% 0);content:"ALTERNATE TEXT";display:block;position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);text-shadow:-3px -3px 0px #f8f005,3px 3px 0px #00e6f6;clip-path:var(--slice-0)}#start:hover:after{animation:1s glitch;animation-timing-function:steps(2, end)}
-@keyframes
-glitch{0%{clip-path:var(--slice-1);transform:translate(-20px, -10px)}10%{clip-path:var(--slice-3);transform:translate(10px, 10px)}20%{clip-path:var(--slice-1);transform:translate(-10px, 10px)}30%{clip-path:var(--slice-3);transform:translate(0px, 5px)}40%{clip-path:var(--slice-2);transform:translate(-5px, 0px)}50%{clip-path:var(--slice-3);transform:translate(5px, 0px)}60%{clip-path:var(--slice-4);transform:translate(5px, 10px)}70%{clip-path:var(--slice-2);transform:translate(-10px, 10px)}80%{clip-path:var(--slice-5);transform:translate(20px, -10px)}90%{clip-path:var(--slice-1);transform:translate(-10px, 0px)}100%{clip-path:var(--slice-1);transform:translate(0)}}@media(min-width: 768px)
-{#start,#start:after{
-  width:200px;
-  height:86px;
-  line-height:88px;
-  margin-left: 0px;
-  // margin-top: -580px;
-  margin-top: -573.5px;
-  margin-left: 545px;
-}}
+#endGame{
+  cursor: pointer;
+  background-color: #00E6F6;
+  width: 200px;
+  height: 45px;
+  margin-top: 175px;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 175px;
+  // font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  display: hidden;
+}
 
-#endGame,#endGame:after{
-  position:absolute;
-  top: 405px;
-  width:150px;
-  height:76px;
-  line-height:78px;
-  font-size:20px;
-  font-family:"Bebas Neue",sans-serif;
-  background:linear-gradient(45deg, transparent 5%, #00E6F6 5%);
-  border:0;
-  color:#fff;
-  letter-spacing:3px;
-  box-shadow:6px 0px 0px #FF013C;
-  outline:rgba(0,0,0,0);
-  user-select:none;
-  -webkit-user-select:none;
-  touch-action:manipulation;
-  margin-top: -320px;
-  margin-left: 602.5px;
-  z-index: 1;
-  // transform: rotate(90deg);
-  /* rotate: 45deg; */
-}
-#endGame:after{
-  --slice-0: inset(50% 50% 50% 50%);
-  --slice-1: inset(80% -6px 0 0);
-  --slice-2: inset(50% -6px 30% 0);
-  --slice-3: inset(10% -6px 85% 0);
-  --slice-4: inset(40% -6px 43% 0);
-  --slice-5: inset(80% -6px 5% 0);
-  content:"ALTERNATE TEXT";
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  margin-top: -20px;
-  margin-left: 0px;
-  background:linear-gradient(45deg, transparent 3%, #31f600 3%, #00E6F6 5%, #FF013C 5%);
-  text-shadow:-3px -3px 0px #f8f005,3px 3px 0px #00e6f6;
-  clip-path:var(--slice-0);}
-#endGame:hover:after{
-  animation:1s glitch;
-  animation-timing-function:steps(2, end)
-}
-@keyframes glitch{
-  0%{clip-path:var(--slice-1);
-  transform:translate(-20px, -10px)}10%{clip-path:var(--slice-3);
-  transform:translate(10px, 10px)}20%{clip-path:var(--slice-1);
-  transform:translate(-10px, 10px)}30%{clip-path:var(--slice-3);
-  transform:translate(0px, 5px)}40%{clip-path:var(--slice-2);
-  transform:translate(-5px, 0px)}50%{clip-path:var(--slice-3);
-  transform:translate(5px, 0px)}60%{clip-path:var(--slice-4);
-  transform:translate(5px, 10px)}70%{clip-path:var(--slice-2);
-  transform:translate(-10px, 10px)}80%{clip-path:var(--slice-5);
-  transform:translate(20px, -10px)}90%{clip-path:var(--slice-1);
-  transform:translate(-10px, 0px)}100%{clip-path:var(--slice-1);
-  transform:translate(0)}
-}@media(min-width: 768px)
-{#endGame,#endGame:after{
-  width:200px;
-  height:86px;
-  line-height:88px;
-  z-index: 1;
-}}
+// #endGame,#endGame:after{
+//   // position:absolute;
+//   width:150px;
+//   height:76px;
+//   font-size:12px;
+//   font-family:"Bebas Neue",sans-serif;
+//   background:linear-gradient(45deg, transparent 5%, #00E6F6 5%);
+//   border:0;
+//   color:#fff;
+//   letter-spacing:3px;
+//   box-shadow:6px 0px 0px #FF013C;
+//   outline:rgba(0,0,0,0);
+//   user-select:none;
+//   -webkit-user-select:none;
+//   touch-action:manipulation;
+//   z-index: 1;
+// }
+// #endGame:after{
+//   --slice-0: inset(50% 50% 50% 50%);
+//   --slice-1: inset(80% -6px 0 0);
+//   --slice-2: inset(50% -6px 30% 0);
+//   --slice-3: inset(10% -6px 85% 0);
+//   --slice-4: inset(40% -6px 43% 0);
+//   --slice-5: inset(80% -6px 5% 0);
+//   content:"ALTERNATE TEXT";
+//   display:block;
+//   position:absolute;
+//   top:0;
+//   left:0;
+//   right:0;
+//   bottom:0;
+//   background:linear-gradient(45deg, transparent 3%, #31f600 3%, #00E6F6 5%, #FF013C 5%);
+//   text-shadow:-3px -3px 0px #f8f005,3px 3px 0px #00e6f6;
+//   clip-path:var(--slice-0);}
+// #endGame:hover:after{
+//   animation:1s glitch;
+//   animation-timing-function:steps(2, end)
+// }
+// @keyframes glitch{
+//   0%{clip-path:var(--slice-1);
+//   transform:translate(-20px, -10px)}10%{clip-path:var(--slice-3);
+//   transform:translate(10px, 10px)}20%{clip-path:var(--slice-1);
+//   transform:translate(-10px, 10px)}30%{clip-path:var(--slice-3);
+//   transform:translate(0px, 5px)}40%{clip-path:var(--slice-2);
+//   transform:translate(-5px, 0px)}50%{clip-path:var(--slice-3);
+//   transform:translate(5px, 0px)}60%{clip-path:var(--slice-4);
+//   transform:translate(5px, 10px)}70%{clip-path:var(--slice-2);
+//   transform:translate(-10px, 10px)}80%{clip-path:var(--slice-5);
+//   transform:translate(20px, -10px)}90%{clip-path:var(--slice-1);
+//   transform:translate(-10px, 0px)}100%{clip-path:var(--slice-1);
+//   transform:translate(0)}
+// }@media(min-width: 768px)
+// {#endGame,#endGame:after{
+//   width:200px;
+//   height:86px;
+//   line-height:88px;
+//   z-index: 1;
+// }}
 
 .play{
   border: none;
+  height: 50px;
+  width: 50px;
 }
 .pause{
   border: none;
+  height: 50px;
+  width: 50px;
 }
 
 .bodyC{
