@@ -1,6 +1,6 @@
 body{
   background-color: rgba(0, 0, 0, 0.788);
-  background-image: url(../images/gameb.jpg) no-repeat center center;
+  background-image: url(../images/planet.jpg) no-repeat center center;
   // -webkit-background-size: cover;
   // -moz-background-size: cover;
   // -o-background-size: cover;
@@ -12,9 +12,6 @@ body{
   justify-content: center;
 }
 
-#start,#end{
-  border:5px solid #000
-}
 .hidden{
   display:none
 }
@@ -33,6 +30,15 @@ canvas{
   // justify-content: center;
 }
 
+.canvasText{
+  // border: 3px solid orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 25px;
+}
+
 .controls{
   font-family:cursive;
   color:rgb(255, 255, 255);
@@ -47,8 +53,8 @@ canvas{
 /* mysite */
 #gravity{
   border:2px solid #00e6f6;
-  background-color:#ff013c;
-  color:#000;
+  background-color: peachpuff;
+  color: #919191;
   position:absolute;
   z-index:10;
   display:flex;
@@ -77,11 +83,11 @@ canvas{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 #hud{
-  border:2px solid #ff013c;
+  // border:2px solid #ff013c;
   background-image:url("https://img.itch.zone/aW1hZ2UvODIxMDAzLzUxOTc3NTYucG5n/original/gfXuIr.png");
   position:absolute;
   margin-top: 155px;
@@ -92,11 +98,13 @@ canvas{
   height: 450px;
   font-size: 22px;
   color: aqua;
-  background: rgba(255, 255, 255, 0.061);
+  // background: rgba(255, 255, 255, 0.061);
+  background: transparent;
   backdrop-filter: blur(5px);
   background:linear-gradient(45deg, transparent 5%);
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   z-index: 1;
+  flex-direction: column;
 }
 
 #linkedin{
@@ -111,30 +119,38 @@ canvas{
 }
 
 #output{
-  color:#ff013c;
+  color:#00E6F6;
   width: 50px;
   display: flex;
   justify-content: center;
   margin-right: 580px;
+  margin-top: 100px;
   z-index: 1;
 }
 
 .buttonContainer{
-  display:flex;
-  flex-direction: row;
-  justify-content:space-between;
-  align-items:center;
+  display: flex;
+  z-index: 10;
+  height: 25px;
+  width: 5px;
   position: fixed;
-  margin-top: 35px;
-  z-index:10;
-  height:25px;
-  width: 435px;
+  right: 10%;
+  // display:flex;
+  // flex-direction: row;
+  // justify-content:space-between;
+  // align-items:center;
+  // // position: fixed;
+  // margin-top: 35px;
+  // z-index:10;
+  // height:25px;
+  // width: 435px;
   background:url(./src/audio/2.mp3) no-repeat center center/cover
 }
 .btn button{
   // width:50px;
+  border: none;
   height:50px;
-  background-color:#000;
+  background-color: transparent;
   color:#00e6f6;
   margin-bottom: 50px;
   cursor: pointer;
