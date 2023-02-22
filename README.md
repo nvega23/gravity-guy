@@ -24,7 +24,7 @@ In Gravity Dash, players will be able to:
   
  # Landing page
 
-<img width="1438" alt="Screenshot 2023-01-14 at 3 42 19 PM" src="https://user-images.githubusercontent.com/93811834/212501873-2159f6b0-5514-4483-a052-43070abc5fbc.png">
+<img width="1440" alt="splash" src="https://user-images.githubusercontent.com/93811834/220776881-83f7bfc4-64a9-4ce0-b3b6-918a4d2b025d.png">
 
 # Technologies, Libraries, APIs
   - Vanilla JavaScript will be used for the games logic
