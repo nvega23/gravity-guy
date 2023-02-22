@@ -29,8 +29,10 @@ In Gravity Dash, players will be able to:
 # Technologies, Libraries, APIs
   - Vanilla JavaScript will be used for the games logic
   - Html, CSS and canvas API will be used to rendering
- 
- 
+
+# Technical implementation details with code snippets.
+   <img width="792" alt="Screenshot 2023-02-22 at 2 46 22 PM" src="https://user-images.githubusercontent.com/93811834/220777548-4532d529-a328-47f1-bfc7-db40058ce5ad.png">
+
 # Implementation Timeline
   - Friday - research how to make a platform where the player can land on
   - Weekend - have player land on either the bottom platform or the sky platform
