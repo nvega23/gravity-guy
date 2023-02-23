@@ -301,12 +301,13 @@ class Game{
         }
     })
     //win condition
-    if (this.scrollOffset >= 3100){
+    if (this.scrollOffset >= 100){
         this.score = this.scrollOffset
-        let winLabel = document.getElementById('win')
-        winLabel.style.display = 'block'
+        // let winLabel = document.getElementById('win')
+        // winLabel.style.display = "block"
         cancelAnimationFrame(gameRun)
     }
+    // game score
     if (this.scrollOffset >= 0){
         this.score = this.scrollOffset
         document.getElementById('output').innerHTML=this.score
