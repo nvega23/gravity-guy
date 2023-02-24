@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         gcontrols.classList.remove('hidden')
         score.classList.remove('hidden')
         end.classList.remove('hidden')
-        win.classList.add('hidden')
+        win.classList.add('none')
     })
     end.addEventListener('click', () => {
         canvas.classList.add('hidden')
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         hud.classList.remove('hidden')
         score.classList.add('hidden')
         gcontrols.classList.add('hidden')
-        win.classList.remove('hidden')
+        // win.classList.add('hidden')
+        win.style.display = 'none'
     })
 })
