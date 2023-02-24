@@ -301,7 +301,7 @@ class Game{
         }
     })
     //win condition
-    if (this.scrollOffset >= 100){
+    if (this.scrollOffset >= 3100){
         this.score = this.scrollOffset
         // let winLabel = document.getElementById('win')
         // winLabel.style.display = "block"
