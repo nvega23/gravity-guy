@@ -297,7 +297,9 @@ class Game{
             this.player.position.y + this.player.height >= platform.position.y) {
              // collision detected!
              this.player.velocity.y = 0
-             this.player.velocity.x = 0
+             this.player.velocity.x = -0.1
+        } else{
+            this.player.velocity.x = 0
         }
     })
     //win condition
