@@ -14,13 +14,13 @@ class Game{
         this.score = 0
         this.gameSpeed = 5
         this.backgroundlayer1 = new Image();//same as getElementByImage()
-        this.backgroundlayer1.src = './images/nature.jpg'
+        this.backgroundlayer1.src = './images/1.png'
         this.backgroundlayer2 = new Image();
-        this.backgroundlayer2.src = './images/nature.jpg'
+        this.backgroundlayer2.src = './images/2.png'
         this.backgroundlayer3 = new Image();
-        this.backgroundlayer3.src = './images/nature.jpg'
+        this.backgroundlayer3.src = './images/3.png'
         this.backgroundlayer4 = new Image();
-        this.backgroundlayer4.src = './images/nature.jpg'
+        this.backgroundlayer4.src = './images/4.png'
         this.platforms = [
             new Platform({
                 x:0, y: 500
@@ -297,7 +297,7 @@ class Game{
             this.player.position.y + this.player.height >= platform.position.y) {
              // collision detected!
              this.player.velocity.y = 0
-             this.player.velocity.x = -0.1
+             this.player.velocity.x = 0
         }
     })
     //win condition

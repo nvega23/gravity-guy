@@ -10,79 +10,67 @@
     <link rel="icon" type="image/x-icon" href="./images/sun.png">
 </head>
   <!-- object-fit: fill; -->
-  <body style="background-image: url(./images/planet.jpg);">
-        <canvas class="hidden" height="600px" width="600px">
-        </canvas>
-
-        <div id="gravity">
-            <h1>
-                Gravity Dash
-            </h1>
-        </div>
-        <div id="gravityControls">
-            <h2 class="gravityControlsText">
-                W: Jump
-                <br>
-                D: Right
-                <br>
-                A: Left
-                <br>
-            </h2>
-            <div id="endGame">
-                <a>Return to the Main Menu</a>
-            </div>
-            <!-- <div id="start">
-                <a>Start</a>
-            </div> -->
-        </div>
+  <body>
+    <div class="container">
+        <canvas id="CanvasId" class="hidden" height="600px" width="600px"></canvas>
+        <h1 id="title">
+            Gravity Guy
+        </h1>
+        <h1 id="win">you win!</h1>
 
         <div class="buttonContainer">
             <div class="btn">
                 <button id="pause">
                     <img src="./images/noSoundSpeaker.png" alt="">
                 </button>
-            </div>
-            <div class="btn">
                 <button id="play">
                     <img src="./images/speaker.png" alt="">
                 </button>
             </div>
         </div>
-
-            <div id='hud'>
-                <div class="canvasText">
-                    <div class="textInsideCanvas">
-                        Instructions:
-                        <p class="instructionsCanvas">
-                            A side-scrolling single player adventure game
-                            jump and dodge obstacles by either jumping or by sticking on the platform
-                            above but
-                            watch out for the blackhole!!!
-                            if the blackhole grabs the hero, the hero will lose
-                            and
-                            we don't wan't that right?
-                    </div>
-                            <div id="start">
-                                <a>Start</a>
-                            </div>
-                        </p>
-                        <br>
-                        <a href="https://github.com/nvega23" target="_blank"><img src="images/icons8-github-48.png" alt="github"  style="width:50px;"></a>
-                        <a href="https://www.linkedin.com/in/nestor-vega-233b43238/" target="_blank"><img src="images/icons8-linkedin-48.png" alt="LinkedIn"  style="width:50px;"></a>
-                        <p style="color: white;">
-                            Made by: Nestor Vega
-                        </p>
-                    </div>
-                </div>
-
-
         <h1 class="score">
             <p id="output"></p>
         </h1>
 
-        <h1 class="win">
-            <p id="win">you win!</p>
-        </h1>
-
+        <div id='hud'>
+            <div class="canvasText">
+                <div class="textInsideCanvas">
+                    Instructions:
+                    <p class="instructionsCanvas">
+                        A side-scrolling single player adventure game
+                        jump and dodge obstacles by either jumping or by sticking on the platform
+                        above but
+                        watch out for the blackhole!!!
+                        if the blackhole grabs the hero, the hero will lose
+                        and
+                        we don't wan't that right?
+                    </p>
+                </div>
+                <div id="gravityControls">
+                    <h2 class="gravityControlsText">
+                        W: Jump
+                        D: Right
+                        <br>
+                        S: Down
+                    </h2>
+                </div>
+                <div id="start">
+                    <h1>Start</h1>
+                </div>
+                <br>
+                <div id="endGame">
+                    <h1>Main Menu</h1>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="contactMe">
+            <a href="https://github.com/nvega23" target="_blank"><img src="images/icons8-github-48.png" alt="github"  style="width:50px;"></a>
+            <a href="https://www.linkedin.com/in/nestor-vega-233b43238/" target="_blank"><img src="images/icons8-linkedin-48.png" alt="LinkedIn"  style="width:50px;"></a>
+            <p style="color: white;">
+                Made by: Nestor Vega
+            </p>
+        </div>
+    </div>
 </body>
 </html>

@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () =>{
     })
     end.addEventListener('click', () => {
         canvas.classList.add('hidden')
+        // canvas.style.background="white"
         play.classList.add('hidden')
         hud.classList.remove('hidden')
         score.classList.add('hidden')
         gcontrols.classList.add('hidden')
-        // win.classList.add('hidden')
         win.style.display = 'none'
     })
 })

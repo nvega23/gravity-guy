@@ -8,7 +8,7 @@ class Platform{
         }
         this.width = 250
         this.height = 150
-        this.plateformImage.src = 'https://raw.githubusercontent.com/nvega23/gravity-guy/main/images/Pads/pad1.png'
+        this.plateformImage.src = 'https://raw.githubusercontent.com/nvega23/gravity-guy/main/images/Pads/Pad_4_4.png'
     }
     draw(){
         this.ctx.drawImage(this.plateformImage, this.position.x, this.position.y, this.width, this.height)
