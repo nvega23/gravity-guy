@@ -1,3 +1,4 @@
+import { container } from 'webpack'
 import Game from './scripts/game'
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         score.classList.remove('hidden')
         end.classList.remove('hidden')
         win.classList.add('none')
+        container.style.background="white"
     })
     end.addEventListener('click', () => {
         canvas.classList.add('hidden')
