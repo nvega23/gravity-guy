@@ -21,6 +21,10 @@ class Game{
         this.backgroundlayer3.src = './images/nature.jpg'
         this.backgroundlayer4 = new Image();
         this.backgroundlayer4.src = './images/nature.jpg'
+        this.layer1 = new Layer(this.backgroundlayer1, 0.5, this.gameSpeed, this.ctx);
+        this.layer2 = new Layer(this.backgroundlayer2, 0.5, this.gameSpeed, this.ctx);
+        this.layer3 = new Layer(this.backgroundlayer3, 0.5, this.gameSpeed, this.ctx);
+        this.layer4 = new Layer(this.backgroundlayer4, 0.5, this.gameSpeed, this.ctx);
         this.platforms = [
             new Platform({
                 x:0, y: 500
@@ -117,7 +121,8 @@ class Game{
                     this.keys.left.pressed = true
                     this.player.velocity.x = -1
                     break
-                case 87:
+                    case 87:
+                    this.keys.left.pressed = false
                     this.player.velocity.y -= 20
                     break
                 case 83:
@@ -241,6 +246,14 @@ class Game{
     layer3.draw();
     layer4.update();
     layer4.draw();
+    this.layer1.update();
+    this.layer1.draw();
+    this.layer2.update();
+    this.layer2.draw();
+    this.layer3.update();
+    this.layer3.draw();
+    this.layer4.update();
+    this.layer4.draw();
     this.platforms.forEach(platform => {
         platform.draw()
     })
@@ -288,18 +301,76 @@ class Game{
         this.reset()
     }
 
+    // this.platforms.forEach(platform => {
+    //     // Calculate the player's boundaries
+    //     const playerLeft = this.player.position.x;
+    //     const playerRight = this.player.position.x + this.player.width;
+    //     const playerTop = this.player.position.y;
+    //     const playerBottom = this.player.position.y + this.player.height;
 
-    // platform collision detecion
+    //     // Calculate the platform's boundaries
+    //     const platformLeft = platform.position.x;
+    //     const platformRight = platform.position.x + platform.width;
+    //     const platformTop = platform.position.y;
+    //     const platformBottom = platform.position.y + platform.height;
+
+    //     // Check for horizontal collision
+    //     const isHorizontalCollision = playerRight >= platformLeft && playerLeft <= platformRight;
+
+    //     // Check for vertical collision
+    //     const isVerticalCollision = playerBottom >= platformTop && playerTop <= platformBottom;
+
+    //     // Handle the collision
+    //     if (isHorizontalCollision && isVerticalCollision) {
+    //         // Collision detected!
+    //         this.player.velocity.y = 0;
+    //         this.player.velocity.x = 0;
+
+    //         // Prevent the player from updating its position
+    //         this.player.position.x = this.player.previousPosition.x;
+    //         this.player.position.y = this.player.previousPosition.y;
+    //     }
+    // });***
+
     this.platforms.forEach(platform => {
-        if (this.player.position.x <= platform.position.x + (platform.width - 45) &&
-            this.player.position.x + this.player.width >= platform.position.x &&
-            this.player.position.y < platform.position.y + (platform.height - 10) &&
-            this.player.position.y + this.player.height >= platform.position.y) {
-             // collision detected!
-             this.player.velocity.y = 0
-             this.player.velocity.x = -0.1
+        const playerLeft = this.player.position.x;
+        const playerRight = this.player.position.x + this.player.width;
+        const playerTop = this.player.position.y;
+        const playerBottom = this.player.position.y + this.player.height;
+
+        const platformLeft = platform.position.x;
+        const platformRight = platform.position.x + platform.width;
+        const platformTop = platform.position.y;
+        const platformBottom = platform.position.y + platform.height;
+
+        const isHorizontalCollision = playerRight >= platformLeft && playerLeft <= platformRight;
+        const isVerticalCollision = playerBottom >= platformTop && playerTop <= platformBottom;
+
+        if (isHorizontalCollision && isVerticalCollision) {
+          // Collision detected!
+          if (this.player.velocity.y > 0 && playerTop < platformBottom) {
+            // Vertical collision from above, stick to the bottom of the platform
+            this.player.velocity.y = 0;
+            this.player.position.y = platformTop - this.player.height;
+          } else if (this.player.velocity.y < 0 && playerBottom > platformTop) {
+            // Vertical collision from below, prevent player from passing through
+            this.player.velocity.y = 0;
+            this.player.position.y = platformBottom;
+          }
+
+          if (this.player.velocity.x > 0 && playerLeft < platformRight) {
+            // Horizontal collision from the left, prevent player from passing through
+            this.player.velocity.x = 0;
+            this.player.position.x = platformLeft - this.player.width;
+          } else if (this.player.velocity.x < 0 && playerRight > platformLeft) {
+            // Horizontal collision from the right, prevent player from passing through
+            this.player.velocity.x = 0;
+            this.player.position.x = platformRight;
+          }
         }
-    })
+      });
+
+
     //win condition
     if (this.scrollOffset === 3100){
         this.score = this.scrollOffset
