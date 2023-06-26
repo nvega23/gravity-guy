@@ -301,37 +301,6 @@ class Game{
         this.reset()
     }
 
-    // this.platforms.forEach(platform => {
-    //     // Calculate the player's boundaries
-    //     const playerLeft = this.player.position.x;
-    //     const playerRight = this.player.position.x + this.player.width;
-    //     const playerTop = this.player.position.y;
-    //     const playerBottom = this.player.position.y + this.player.height;
-
-    //     // Calculate the platform's boundaries
-    //     const platformLeft = platform.position.x;
-    //     const platformRight = platform.position.x + platform.width;
-    //     const platformTop = platform.position.y;
-    //     const platformBottom = platform.position.y + platform.height;
-
-    //     // Check for horizontal collision
-    //     const isHorizontalCollision = playerRight >= platformLeft && playerLeft <= platformRight;
-
-    //     // Check for vertical collision
-    //     const isVerticalCollision = playerBottom >= platformTop && playerTop <= platformBottom;
-
-    //     // Handle the collision
-    //     if (isHorizontalCollision && isVerticalCollision) {
-    //         // Collision detected!
-    //         this.player.velocity.y = 0;
-    //         this.player.velocity.x = 0;
-
-    //         // Prevent the player from updating its position
-    //         this.player.position.x = this.player.previousPosition.x;
-    //         this.player.position.y = this.player.previousPosition.y;
-    //     }
-    // });***
-
     this.platforms.forEach(platform => {
         const playerLeft = this.player.position.x;
         const playerRight = this.player.position.x + this.player.width;
