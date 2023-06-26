@@ -22,13 +22,30 @@ canvas{
   color:rgb(255, 0, 230);
   background:linear-gradient(45deg, transparent 5%);
   border-radius: 1vh;
-  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.41);
+  box-shadow: -10px 15px 20px rgba(0, 0, 0, 0.527);
 }
 
 @media (max-width: 1900px) {
   canvas {
-    border: 5px solid white;
     margin-top: -15vh;
+  }
+  .win{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-right: 20vh;
+  }
+}
+
+@media (max-width: 1600px) {
+  canvas {
+    margin-top: -25vh;
+  }
+  .win{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-right: 33vh;
   }
 }
 
@@ -136,10 +153,8 @@ canvas{
 #output{
   color:#00E6F6;
   width: 50px;
-  // display: flex;
-  // justify-content: center;
   margin-right: 580px;
-  margin-top: 100px;
+  // margin-top: 100px;
   z-index: 1;
 }
 
@@ -168,7 +183,7 @@ canvas{
 .win{
   position:absolute;
   top:25%;
-  right:49%;
+  right:70vh;
   transform:translate(50%, 50%);
   width:150px;
   height:75px;
