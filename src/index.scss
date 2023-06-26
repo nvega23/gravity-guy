@@ -27,7 +27,7 @@ canvas{
 
 @media (max-width: 1900px) {
   canvas {
-    margin-top: -15vh;
+    margin-top: -5vh;
   }
   .win{
     display: flex;
@@ -38,9 +38,6 @@ canvas{
 }
 
 @media (max-width: 1600px) {
-  canvas {
-    margin-top: -25vh;
-  }
   .win{
     display: flex;
     justify-content: center;
