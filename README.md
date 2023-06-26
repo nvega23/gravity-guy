@@ -17,8 +17,8 @@ In Gravity Dash, players will be able to:
   - reach the moon to beat the game!
 
  # Landing page
-
-<img width="1440" alt="Screenshot 2023-06-26 at 10 52 50 AM" src="https://github.com/nvega23/gravity-guy/assets/93811834/5fffef2e-1573-4cee-889b-e451377243f6">
+ 
+ <img width="1440" alt="Screenshot 2023-06-26 at 12 17 18 PM" src="https://github.com/nvega23/gravity-guy/assets/93811834/75bcebc3-30a4-405e-9248-da6dc96056a1">
 
 # Technologies, Libraries, APIs
   - Vanilla JavaScript will be used for the games logic
@@ -26,7 +26,7 @@ In Gravity Dash, players will be able to:
 
 # Take a look at the game
 
-<img width="1440" alt="Screenshot 2023-06-26 at 10 53 19 AM" src="https://github.com/nvega23/gravity-guy/assets/93811834/ab21d80a-5a0d-426a-9e51-63f983faff74">
+<img width="1440" alt="Screenshot 2023-06-26 at 12 19 19 PM" src="https://github.com/nvega23/gravity-guy/assets/93811834/3f333c12-3aa4-4497-8291-01c9fbd63adb">
 
 # Technical implementation details with code snippets.
    <img width="792" alt="Screenshot 2023-02-22 at 2 46 22 PM" src="https://user-images.githubusercontent.com/93811834/220777548-4532d529-a328-47f1-bfc7-db40058ce5ad.png">
