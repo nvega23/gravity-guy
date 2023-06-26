@@ -21,6 +21,8 @@ class Game{
         this.backgroundlayer3.src = './images/nature.jpg'
         this.backgroundlayer4 = new Image();
         this.backgroundlayer4.src = './images/nature.jpg'
+        this.moonImage = new Image();
+        this.moonImage.src = '../images/sun.png';
         this.layer1 = new Layer(this.backgroundlayer1, 0.5, this.gameSpeed, this.ctx);
         this.layer2 = new Layer(this.backgroundlayer2, 0.5, this.gameSpeed, this.ctx);
         this.layer3 = new Layer(this.backgroundlayer3, 0.5, this.gameSpeed, this.ctx);
@@ -260,6 +262,16 @@ class Game{
     if (this.player.position.y >= 600){
         this.reset()
     }
+
+    const finalPlatform = this.platforms[this.platforms.length - 1];
+    const finalPlatformRight = finalPlatform.position.x + finalPlatform.width;
+    if (finalPlatformRight <= 0) {
+      // Player has reached the final platform, draw the moon
+      const moonX = finalPlatform.position.x + finalPlatform.width - this.scrollOffset;
+      const moonY = finalPlatform.position.y - this.moonImage.height;
+      this.ctx.drawImage(this.moonImage, moonX, moonY);
+    }
+
     this.blackHole.update()
     this.player.update()
     const gameRun = requestAnimationFrame(this.animate);
