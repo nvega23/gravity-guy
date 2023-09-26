@@ -262,3 +262,8 @@ canvas{
   width: auto;
   display: flex;
 }
+
+.instructionImage{
+  width: -webkit-fill-available;
+  height: 15vh;
+}
