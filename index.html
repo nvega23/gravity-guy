@@ -10,8 +10,18 @@
     <link rel="icon" type="image/x-icon" href="./images/sun.png">
 </head>
   <body style="background-image: url(./images/planet.jpg);">
-        <canvas class="hidden" height="600px" width="600px">
-        </canvas>
+      <div class="containerAroundGame">
+          <div class="scoreWinText">
+              <h1 class="score">
+                  <p id="output"></p>
+              </h1>
+      
+              <h1 class="win">
+                  <p id="win">you win!</p>
+              </h1>
+          </div>
+          <canvas class="hidden" height="600px" width="600px"></canvas>
+    </div>
 
         <div id="gravity">
             <h1>
@@ -51,24 +61,27 @@
                             Get to know the game
                         </ul>
                         <p class="instructionsCanvas">
-                            On the top of the page we have the controls,
-                            <br>
-                            {W: Jetpack, A: Left, S: Drop, D: right}
-                            <br>
-                            Those controls will help us win the game. We also have
-                            a 'Return to the main menu' button that will let us return
-                            back to this page.
-                            <br>
-                            Do you like music while playing games?
-                            There are two images on the top right corner.
-                            One image indicates how to mute sound and the other
-                            indicates how to play music. Why not give it a try?
-                            <br>
-                            <br>
-                            Are you ready to play the game? Try not to fall or be caught by
-                            the black hole.
-                            Click on the Start button in order to get started.
-                            Good Luck!
+                            <p class="title">
+                                Game Instructions
+                                Controls:
+                            </p>
+                            <p class="mainTitleText">
+
+                                W: Jetpack
+                                A: Move Left
+                                S: Drop
+                                D: Move Right
+                                Use these controls to navigate and win the game.
+                                
+                                Additional Options:
+                                
+                                Return to Main Menu: Click the button to go back to the main menu.
+                                Music Control: Use the icons in the top right corner to toggle music on or off. Try it out for a more immersive experience!
+                                Ready to Play?
+                                Avoid falling or being caught by the black hole. Click the Start button to begin.
+                                
+                                Good Luck!
+                            </p>
                             <div id="start">
                                 <a>Start</a>
                             </div>
@@ -77,15 +90,6 @@
                     </div>
                 </div>
 
-        <div class="scoreWinText">
-            <h1 class="score">
-                <p id="output"></p>
-            </h1>
-
-            <h1 class="win">
-                <p id="win">you win!</p>
-            </h1>
-        </div>
 
 </body>
 </html>
